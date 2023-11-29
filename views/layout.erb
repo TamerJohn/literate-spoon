@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>CMS Title</title>
+  <meta charset="UTF-8">
+  <style>
+    header {
+      background-color: yellow;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+
+    textarea:not(.txt) {
+      font-family: inherit;
+    }
+
+    form {
+      display: inline-block;
+    }
+
+    label + label {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <% if session[:error] %>
+      <p><%= session.delete(:error) %></p>
+    <% elsif session[:success] %>
+      <p><%= session.delete(:success) %></p>
+    <% end %>
+  </header>
+
+  <%= yield %>
+</body>
+</html>
